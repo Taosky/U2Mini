@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "U2Mini",
+    "description": "Mini Popup for Youtube",
+    "version": "1.0",
+    "homepage_url": "https://taosky.github.io",
+    "browser_action": 
+    {
+        "default_icon": "icons/menubar.png",
+        "default_title": "U2Mini",
+        "default_popup": "html/popup.html"
+    },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [
+        {
+          "matches": ["https://m.youtube.com/feed/subscriptions"],
+          "run_at": "document_end",
+          "js": ["popup_modify.js"],
+          "all_frames": true
+        }
+      ],
+    "permissions": [
+        "contextMenus",
+        "tabs",
+        "webRequest",
+        "webRequestBlocking",
+        "*://m.youtube.com/*",
+        "*://www.youtube.com/*"
+    ]
+}
